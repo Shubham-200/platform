@@ -1,0 +1,4 @@
+1) WAP to swap two numbers using temp variable by passing variables to swap_numbers() function as refernce variables.
+   Display message "before swapping" and "after swapping" accordingly.
+
+   NOTE: Do not pass variables to swap_numbers() function as pointers (Like in C language)

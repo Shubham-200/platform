@@ -1,0 +1,38 @@
+WAP to illustrate c++ concept of Polymorphism,Virtual function.
+
+
+#Class base#
+
+Step 1: Start the program.
+
+Step 2: Declare the base class base.
+
+Step 3: Declare and define the virtual function show().It should print "Base class: virtual show() function".
+
+Step 4: Declare and define the function display(). It should print "Base class: display() function".
+
+***********************************************************************************************************
+#Class derived#
+
+Step 5: Create the derived class derived from the base class.
+
+Step 6: Declare and define the function show().It should print "Derived class: show() function".
+
+Step 7: Declare and define the function display(). It should print "Derived class: display() function".
+
+************************************************************************************************************
+#main()
+
+Step 8: Create the base class object as base_object and pointer variable as ptr. Make that ptr points to base_object.
+
+Step 9: Call the functions display() and show() using the ptr.
+
+
+	
+Step 11: Create the derived class object as derived_object. Make that ptr points to derived_object.
+
+Step 12: Call the functions display() and show() using the ptr.
+	 
+
+Step 11: Stop the program.
+
