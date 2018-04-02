@@ -1,0 +1,33 @@
+WAP to ilustrate c++ concept of inheritance
+
+
+#Class emp#
+Step 1: Start the program.
+
+Step 2: Declare the base class emp.
+
+Step 3: Define and declare the function get_employee_info() to get the employee details like emp_number,emp_name,emp_designation.
+
+****************************************************************************
+#Class salary#
+Step 4: Declare the derived class salary.
+
+Step 5: Declare and define the function get_salary_info() to get the salary details like basic_pay,HRA,DA,PF. 
+
+Step 6: Define the function calculate() to find the net pay.
+	(using formula net_pay = basic_pay + HRA + DA - PF)
+
+Step 7: Define the function display().It should print all emplyee details and salary details.
+
+*****************************************************************************
+#main()#
+Step 8: Create the derived class object.(array of objects like salary s[20])
+
+Step 9: Read the number of employees.
+
+Step 10: Call the function get_employee_info(),get_salary_info() and calculate() to each employees.
+
+Step 11: Call the display() to each employees.
+
+Step 12: Stop the program.
+
