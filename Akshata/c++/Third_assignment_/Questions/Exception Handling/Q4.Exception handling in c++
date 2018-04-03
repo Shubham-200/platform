@@ -1,0 +1,14 @@
+#Covers Exception handling in c++
+
+Step 1: Start the program.
+
+Step 2: Declare and define the function test().
+
+Step 3: Inside function test(), Within the try block check whether the value is greater than zero or not.
+    	a. if  the value greater than zero throw the value and catch the corresponding exception.
+    	b. Otherwise throw the character(eg: throw 'x') and catch the corresponding exception.
+
+Step 4: Call function test() for 10 and 0 values.
+
+Step 5: Stop the program.
+

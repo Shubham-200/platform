@@ -1,0 +1,17 @@
+#Covers File handling in c++ 
+
+STEP 1:  Start the program.
+
+STEP 2:  Declare the variables.
+
+STEP 3:  Read the file name.
+
+STEP 4:  open the file to write the contents(welcome to globaledge).
+
+STEP6:   write the file contents as uppercase.
+
+STEP7:   Close the file.
+
+STEP7:   Now,open the file to read the contents and display contents.
+
+STEP 8:  Stop the program. 
