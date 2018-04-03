@@ -1,0 +1,96 @@
+Follow the following steps to create busybox rootfs.
+
+-->Download the tool using the below link
+
+https://busybox.net/downloads/busybox-1.24.1.tar.bz2
+
+Or download any latest busybox from https://www.busybox.net/
+
+-->Cross compile using the following commands
+
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- defconfig
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- menuconfig
+
+-->Select Busybox Settings -> Build Options -> Build Busybox as a static binary (no shared libs).
+
+--> Make sure that you have a ext3 or ext4 partition in your sdcard or else make one.
+
+--> Then execute the following commands for building.
+
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- CONFIG_PREFIX=/path/to/RFS install
+
+-->After the successful completion of the above commands, you can see 3 directories (bin, sbin, usr) and one file (linuxrc) created in your RFS directory. Path to RFS should be like /media/user/rfs which resides in SD card as ext3 file system. Apart from these, we need few more directories mentioned above to boot the kernel. So, move to the RFS location and create the following files and directories.
+
+--> Create /dev and some special files under this directory.
+
+mkdir dev
+
+mknod dev/console c 5 1
+
+mknod dev/null c 1 3
+
+mknod dev/zero c 1 5
+
+--> For the static libraries, copy from the ARM cross compiler toolchain path.
+
+mkdir lib usr/lib
+
+rsync -a /opt/arm-linux-gnueabihf/lib/ ./lib/
+
+rsync -a /opt/arm-linux-gnueabihf/lib/ ./usr/lib/
+
+--> Create directories for mounting the virtual filesystems (procfs, sysfs) and root directory.
+
+$ mkdir proc sys root
+
+--> Create /etc and then, create additional files inside this directory.
+
+mkdir etc
+
+cat >> etc/inittab
+null::sysinit:/bin/mount -a
+null::sysinit:/bin/hostname -F /etc/hostname
+null::respawn:/bin/cttyhack /bin/login root
+null::restart:/sbin/reboot
+[ctrl-D]
+
+--> Create another file called fstab and populate it. This file will mount the virtual file systems.
+
+cat >> etc/fstab
+proc  /proc proc  defaults  0 0
+sysfs /sys  sysfs defaults  0 0
+[ctrl-D]
+
+--> Also, create files called hostname and passwd.
+
+cat >> etc/hostname
+embedjournal
+[ctrl-D]
+
+cat >> etc/passwd
+root::0:0:root:/root:/bin/sh
+[ctrl-D]
+
+--> Busybox init will first look for /etc/init.d/rcS script, if it can’t find that then it will look for /etc/inittab. Inittab file will mount the virtual filesystem using fstab. Also, it will have the command for getting login prompt and shell.
+
+/sbin/init -> /bin/cttyhack -> /bin/login -> /bin/sh.
+
+--> Here, we don’t use password for login. So, after logging in, set the password by executing ‘passwd’ command.
+
+Note: You may encounter ‘read only filesystem error’. This is due to the kernel parameters which Uboot has passed.
+
+root=/dev/mmcblk0p2 rw
+
+If you are not using uEnv.txt file then give write permission in the following command.
+
+$setenv bootargs console=ttyO0,115200n8 root=/dev/mmcblk0p1 rw rootfstype=ext4 rootwait
+
+If you don't do this, then you cannot add or remove or modify any files in your filesystem.
+
+This will mount the RFS as read/write file system.
+
+References - 
+
+---1) https://embedjournal.com/custom-rfs-beaglebone-black/
+---2) https://www.busybox.net/downloads/BusyBox.html
+---3) https://en.wikipedia.org/wiki/BusyBox
