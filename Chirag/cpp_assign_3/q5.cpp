@@ -141,9 +141,9 @@ int main(void)
 		cout << year << " is not a leap year\n";
 
 	try {
-		int lm = 1;
-		if (month % 2)
-			lm = 0;
+		int lm = 0;
+		if (month == 2 || month == 4 || month == 6 || month == 9 || month == 11)
+			lm = 1;
 
 		if (date < 0 || (lm && date > 30) || date > 31)
 			throw invalidDate();
