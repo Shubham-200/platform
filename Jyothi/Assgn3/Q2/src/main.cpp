@@ -21,7 +21,7 @@ int main(void)
 
 	int size = sizeof(arr1)/ sizeof(arr1[0]);
 	
-	cout << "given array";
+	cout << "given array" << endl;
 	for(int index = 0; index < size; index++)
 		cout << arr1[index] << "\t";
 
@@ -29,7 +29,7 @@ int main(void)
 	cout << "minimum of given int -> " << minimum(arr1, size) << endl; 
 
 	size = sizeof(arr2)/ sizeof(arr2[0]);
-	cout << "given array";
+	cout << "\ngiven array" << endl;
 	for(int index = 0; index < size; index++)
 		cout << arr2[index] << "\t";
 
@@ -37,7 +37,7 @@ int main(void)
 	cout << "minimum of given char -> " << minimum(arr2, size) << endl; 
 
 	size = sizeof(arr3)/ sizeof(arr3[0]);
-	cout << "given array";
+	cout << "\ngiven array" << endl;
 	for(int index = 0; index < size; index++)
 		cout << arr3[index] << "\t";
 
