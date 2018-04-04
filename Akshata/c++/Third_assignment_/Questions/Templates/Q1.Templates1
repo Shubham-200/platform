@@ -1,0 +1,13 @@
+#Covers Templates
+
+STEP 1:  Start the program.
+
+STEP 2:  Declare the template class.
+
+STEP 3:  Declare and define a swap() fuction to swap two values using temp variable.The swap() function should swap int,double,char values.
+
+STEP 4:  Call swap() function for different inputs(int,double,char). Display the results "before swapping" and "after swapping" accordingly.
+
+STEP 5:  Stop the program. 
+
+
