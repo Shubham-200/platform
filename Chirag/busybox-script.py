@@ -1,3 +1,9 @@
+#
+# Before running this script make sure that you have a ext4 partition 
+# called RFS in your sdcard. When the sdcard is inserted there should
+# be a directory /media/hostname/RFS.
+#
+
 import os
 import urllib
 import time
